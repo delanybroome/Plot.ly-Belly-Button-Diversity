@@ -5,10 +5,13 @@ console.log(bellydata)
 function buildChart(BellySamples) {
     //Sample_Values for values 
         var Sample_Values = bellydata.Sample_Values;
+        console.log(Sample_Values)
     //Use `otu_ids` as the labels for the bar chart.
         var otu_ids = bellydata.otu_ids;
+        console.log(otu_ids)
     //Use `otu_labels` as the hovertext for the chart.
         var otu_labels = bellydata.otu_labels
+        console.log(otu_labels)
     //Slice the first 10 object for plotting and Reverse Array
         var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
         var trace1 = {
