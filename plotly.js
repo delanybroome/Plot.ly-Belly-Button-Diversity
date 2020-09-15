@@ -61,11 +61,30 @@ function getInfo(id) {
     });
 }
 
-//Display each key-value pair from the
-// metadata JSON object somewhere on the page.
-
-
 //Update all of the plots any time that a new sample is selected.
-    }
-
+function optionChanged(id) {
+    getPlot(id);
+    getInfo(id);
 }
+
+// create the function for the initial data rendering
+function init() {
+    // select dropdown menu 
+    var dropdown = d3.select("#selDataset");
+
+    // grab data
+    d3.json("samples.json").then((bellydata)=> {
+        console.log(bellydata)
+
+        // get the id data to the dropdwown menu
+        bellydata.names.forEach(function(name) {
+            dropdown.append("option").text(name).property("value");
+        });
+
+        // call the functions to display the data and the plots to the page
+        getPlot(data.names[0]);
+        getInfo(data.names[0]);
+    });
+}
+
+init();
