@@ -1,8 +1,8 @@
 //Step 1: Use D3 Library to Read JSON data file
-d3.json("samples.json").then((bellydata) => {
-//Create Horizontal Bar Chart With  drop Down Menu to display top 10 OTUS fuond in that indv.
-console.log(bellydata)
 function buildChart(BellySamples) {
+    d3.json("samples.json").then((bellydata) => {
+        //Create Horizontal Bar Chart With  drop Down Menu to display top 10 OTUS fuond in that indv.
+        console.log(bellydata)
     //Sample_Values for values 
         var Sample_Values = bellydata.Sample_Values;
         console.log(Sample_Values)
