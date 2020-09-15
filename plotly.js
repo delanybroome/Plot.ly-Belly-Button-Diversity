@@ -25,8 +25,16 @@ function buildChart(BellySamples) {
         });
 //Create a Bubble Chart
 // Use `otu_ids` for the x values.
-
-// Use `sample_values` for the y values.
+var trace2 = {
+    x: samples.otuID
+    y: samples.sample_values, 
+    mode: "markers", 
+    marker: {
+        size: samples.sample_values, 
+        color: samples.otu_ids
+    }
+}
+// Use `sample_values` for  the y values.
 
 // Use `sample_values` for the marker size.
 
