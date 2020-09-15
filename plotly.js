@@ -22,30 +22,48 @@ function buildChart(BellySamples) {
         };
         var barData = [trace1];
           Plotly.newPlot("bar", barData);
-        });
+        };
 //Create a Bubble Chart
 // Use `otu_ids` for the x values.
 var trace2 = {
     x: samples.otuID
+// Use `sample_values` for  the y values.
     y: samples.sample_values, 
     mode: "markers", 
     marker: {
-        size: samples.sample_values, 
-        color: samples.otu_ids
-    }
-}
-// Use `sample_values` for  the y values.
-
 // Use `sample_values` for the marker size.
-
+        size: samples.sample_values, 
 // Use `otu_ids` for the marker colors.
-
+        color: samples.otu_ids
+    },
 // Use `otu_labels` for the text values.
+    text: samples.otu_labels
+};
+
+var bubble_data = [trace2];
+Plotly.newPlot("bubble", bubble_data);
 
 //Display Sample Meta Data 
+function getInfo(id) {
+    d3.json("samples.json").then((bellydata) => {
+        var metadata = bellydata.metadata;
+        console.log(metadata)
+    //filter by id
+    var result = metadata.filter(meta => meta.id.toString() === id) [0];
+
+    var demographicInfo = d3.select("#sample-metadata"); 
+    demographicInfo.html("");
+    // append demographic info to the panel 
+    Object.defineProperties(result).orEach((key) => {
+        demographicInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");
+    });
+
+    });
+}
 
 //Display each key-value pair from the
 // metadata JSON object somewhere on the page.
+
 
 //Update all of the plots any time that a new sample is selected.
     }
